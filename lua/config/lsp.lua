@@ -9,6 +9,7 @@ vim.lsp.config('eslint', {
 	end,
 })
 vim.lsp.enable('lua_ls')
+vim.lsp.enable('vtsls')
 vim.lsp.enable('eslint')
 vim.lsp.enable('svelte')
 
