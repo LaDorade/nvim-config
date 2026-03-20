@@ -1,9 +1,13 @@
 return {
 	{
-		'kepano/flexoki-neovim',
-		name = 'flexoki', lazy = false,
+		'catppuccin/nvim',
+		lazy = false,
+		name = "catppuccin",
+		opts = {
+			flavor = "mocha"
+		},
 		config = function()
-			vim.cmd([[colorscheme flexoki]])
+			vim.cmd([[colorscheme catppuccin]])
 		end,
 		priority = 1000
 	},
