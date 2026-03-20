@@ -12,6 +12,8 @@ vim.lsp.enable('lua_ls')
 vim.lsp.enable('vtsls')
 vim.lsp.enable('eslint')
 vim.lsp.enable('svelte')
+vim.lsp.enable('nixd')
+vim.lsp.enable('tailwindcss')
 
 
 vim.diagnostic.config({
