@@ -14,6 +14,11 @@ vim.lsp.enable('eslint')
 vim.lsp.enable('svelte')
 vim.lsp.enable('nixd')
 vim.lsp.enable('tailwindcss')
+vim.lsp.config('*', {
+	on_attach = function ()
+		vim.keymap.set('n', 'gd', vim.lsp.buf.definition)
+	end
+})
 
 
 vim.diagnostic.config({
