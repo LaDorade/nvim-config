@@ -1,13 +1,10 @@
 return {
 	{
-		'catppuccin/nvim',
+		'shatur/neovim-ayu',
 		lazy = false,
-		name = "catppuccin",
-		opts = {
-			flavor = "mocha"
-		},
+		name = "ayu",
 		config = function()
-			vim.cmd([[colorscheme catppuccin]])
+			vim.cmd([[colorscheme monokai_vibrant]])
 		end,
 		priority = 1000
 	},

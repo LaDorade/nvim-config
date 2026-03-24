@@ -1,9 +1,14 @@
 return {
 	{
 		"nvim-lualine/lualine.nvim",
-		dependencies = { 'nvim-tree/nvim-web-devicons' },
+		dependencies = {
+			'nvim-tree/nvim-web-devicons',
+			'shatur/neovim-ayu'
+		},
+		opts = {
+			theme = 'ayu',
+		},
 		config = function ()
-
 			-- Eviline config for lualine
 			-- Author: shadmansaleh
 			-- Credit: glepnir
