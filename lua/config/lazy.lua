@@ -18,12 +18,13 @@ vim.opt.rtp:prepend(lazypath)
 -- Make sure to setup `mapleader` and `maplocalleader` before
 -- loading lazy.nvim so that mappings are correct.
 -- This is also a good place to setup other settings (vim.opt)
-vim.g.mapleader = " "
+vim.g.mapleader    = " "
 vim.g.maplocalleader = "\\"
-vim.opt.number = true;
+vim.opt.number     = true;
 vim.opt.relativenumber = true;
-vim.opt.tabstop = 4
+vim.opt.tabstop    = 4
 vim.opt.shiftwidth = 0;
+vim.wo.signcolumn  = "yes:1"
 
 -- Setup lazy.nvim
 require("lazy").setup({

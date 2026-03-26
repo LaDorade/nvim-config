@@ -1,5 +1,6 @@
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
+-- config
 local base_on_attach = vim.lsp.config.eslint.on_attach
 vim.lsp.config('eslint', {
 	on_attach = function(client, bufnr)
@@ -8,6 +9,8 @@ vim.lsp.config('eslint', {
 		vim.keymap.set('n', '<leader>es', '<cmd>LspEslintFixAll<cr>')
 	end,
 })
+
+-- declare
 vim.lsp.enable('lua_ls')
 vim.lsp.enable('vtsls')
 vim.lsp.enable('eslint')
