@@ -1,4 +1,4 @@
-vim.cmd("language en_US.utf8")
+-- vim.cmd("language en_US")
 
 require("config.lazy")
 require("config.lsp")
