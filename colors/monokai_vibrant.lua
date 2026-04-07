@@ -15,10 +15,9 @@ local colors = {
   white    = "#F6F6F6",
 }
 
--- Configuration des groupes de surbrillance (Highlight Groups)
 local hl = vim.api.nvim_set_hl
 
--- Interface (UI)
+-- UI
 hl(0, "Normal", { fg = colors.fg, bg = colors.bg })
 hl(0, "CursorLine", { bg = colors.line_bg })
 hl(0, "Visual", { bg = colors.selection })
@@ -26,7 +25,7 @@ hl(0, "LineNr", { fg = colors.grey })
 hl(0, "CursorLineNr", { fg = colors.white, bold = true })
 hl(0, "Search", { fg = colors.bg, bg = colors.yellow })
 
--- Syntaxe standard
+-- Syntaxe
 hl(0, "Comment", { fg = colors.comment, italic = true })
 hl(0, "String", { fg = colors.yellow })
 hl(0, "Number", { fg = colors.purple })
@@ -48,7 +47,6 @@ hl(0, "StorageClass", { fg = colors.red, italic = true })
 hl(0, "Structure", { fg = colors.cyan })
 hl(0, "Special", { fg = colors.purple })
 
--- Treesitter (si tu l'utilises, fortement recommandé)
 hl(0, "@variable", { fg = colors.blue })
 hl(0, "@parameter", { fg = colors.orange, italic = true })
 hl(0, "@property", { fg = colors.fg })
