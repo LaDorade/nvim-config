@@ -1,4 +1,4 @@
-vim.keymap.set('n', '<leader>pv', vim.cmd.Ex)
+-- vim.keymap.set('n', '<leader>pv', vim.cmd.Ex) -- when not using Oil.nvim
 
 -- Credits to theprimeagen
 -- greatest remap ever
