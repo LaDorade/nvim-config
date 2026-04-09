@@ -21,6 +21,7 @@ return {
 			{ '<leader>pg', "<cmd>Telescope live_grep<cr>" , { desc = 'Telescope live grep' }},
 			{ '<leader>pb', "<cmd>Telescope buffers<cr>"   , { desc = 'Telescope buffers' }},
 			{ '<leader>ph', "<cmd>Telescope help_tags<cr>" , { desc = 'Telescope help tags' }},
+			{ '<leader>pr', "<cmd>Telescope resume<cr>"    , { desc = 'Resume to last search results' }},
 			{ '<leader>ps', function ()
 				local builtin = require('telescope.builtin')
 				builtin.grep_string({search = vim.fn.input({
