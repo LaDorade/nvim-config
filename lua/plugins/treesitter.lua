@@ -1,21 +1,35 @@
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
-		branch = 'master',
 		lazy = false,
 		build = ':TSUpdate',
 		config = function ()
-			require'nvim-treesitter.configs'.setup {
-				ensure_installed = { "lua", "svelte", "vim", "javascript", "typescript", },
-				highlight = {
-					enable = true,
-					-- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-					-- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-					-- Using this option may slow down your editor, and you may see some duplicate highlights.
-					-- Instead of true it can also be a list of languages
-					additional_vim_regex_highlighting = false,
-				},
-			}
+			require('nvim-treesitter').install { 'typescript', 'svelte', 'zig', 'javascript' }
+			vim.api.nvim_create_autocmd("FileType", {
+				pattern = { "*" },
+				callback = function(args)
+					local ft = vim.bo[args.buf].filetype
+					local lang = vim.treesitter.language.get_lang(ft)
+
+					if not vim.treesitter.language.add(lang) then
+						local available = vim.g.ts_available
+						or require("nvim-treesitter").get_available()
+						if not vim.g.ts_available then
+							vim.g.ts_available = available
+						end
+						if vim.tbl_contains(available, lang) then
+							require("nvim-treesitter").install(lang)
+						end
+					end
+
+					if vim.treesitter.language.add(lang) then
+						vim.treesitter.start(args.buf, lang)
+						-- vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+						-- vim.wo[0][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
+						-- vim.wo[0][0].foldmethod = "expr"
+					end
+				end,
+			})
 		end
 	},
 }
