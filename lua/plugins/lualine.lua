@@ -16,11 +16,8 @@ return {
 						}
 					},
 					{
-						'buffers',
-						show_filename_only = false,
-						filetype_names = {
-							dashboard = 'Dashboard'
-						},
+						'filename',
+						filename = 1,
 					},
 					{
 						'lsp_status'
