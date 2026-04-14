@@ -1,24 +1,25 @@
 local M = {}
-local aug = vim.api.nvim_create_augroup("renaming", { clear = true})
+
+M.PLUGIN_NAME = "float-rename"
+M.GROUP       = vim.api.nvim_create_augroup(M.PLUGIN_NAME .. "-group", { clear = true})
 
 ---@param buf number|nil
 ---@return vim.lsp.Client|nil
 --- Get the first client who can rename
 M.getLSPClient = function (buf)
-	local active_clients = vim.lsp.get_clients({ bufnr = buf or 0 })
-	for _, client in ipairs(active_clients) do
-		if client:supports_method('textDocument/rename') then
-			return client
-		end
+	local active_clients = vim.lsp.get_clients({ bufnr = buf or 0, method = "textDocument/rename" })
+	if #active_clients >= 1 then
+		return active_clients[1]
+	else
+		return nil
 	end
-	return nil
 end
 
 ---@param client vim.lsp.Client
 ---@param params lsp.TextDocumentPositionParams
 M.performRename = function (client, params)
 	if client == nil then
-		vim.notify("[my-plugin] No lsp client", vim.lsp.log_levels.WARN)
+		vim.notify("[" ..M.PLUGIN_NAME .. "] No lsp client", vim.lsp.log_levels.WARN)
 		return
 	end
 
@@ -26,12 +27,12 @@ M.performRename = function (client, params)
 	---Credits: https://github.com/smjonas/inc-rename.nvim
 	local basic_handler = function (err, result, _)
 		if err and err.message then
-			vim.notify("[my-plugin] Error while renaming: " .. err.message, vim.lsp.log_levels.ERROR)
+			vim.notify("[" ..M.PLUGIN_NAME .. "] Error while renaming: " .. err.message, vim.lsp.log_levels.ERROR)
 			return
 		end
 
 		if not result or vim.tbl_isempty(result) then
-			vim.notify("[my-plugin] Nothing renamed", vim.lsp.log_levels.WARN)
+			vim.notify("[" ..M.PLUGIN_NAME .. "] Nothing renamed", vim.lsp.log_levels.WARN)
 			return
 		end
 
@@ -56,7 +57,7 @@ M.setupAutocmd = function (float_win, ctx_win, float_buf, ctx_buf)
 
 	vim.api.nvim_create_autocmd("WinLeave", {
 		buffer = float_buf,
-		group = aug,
+		group = M.GROUP,
 		callback = function ()
 			M.close(float_win, float_buf)
 		end
@@ -64,11 +65,11 @@ M.setupAutocmd = function (float_win, ctx_win, float_buf, ctx_buf)
 
 	vim.api.nvim_create_autocmd("BufWriteCmd", {
 		buffer = float_buf,
-		group = aug,
+		group = M.GROUP,
 		callback = function ()
 			local client = M.getLSPClient(ctx_buf);
 			if client == nil then
-				vim.notify("[my-plugin] No lsp client", vim.lsp.log_levels.WARN)
+				vim.notify("[" ..M.PLUGIN_NAME .. "] No lsp client", vim.lsp.log_levels.WARN)
 				return
 			end
 
