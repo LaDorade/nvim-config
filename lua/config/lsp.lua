@@ -18,6 +18,7 @@ vim.lsp.enable('svelte')
 vim.lsp.enable('nixd')
 vim.lsp.enable('tailwindcss')
 vim.lsp.enable('clangd')
+vim.lsp.enable('gopls')
 vim.lsp.config('*', {
 	capabilities = capabilities,
 	on_attach = function ()

@@ -12,6 +12,16 @@ vim.wo.signcolumn      = "yes:1"
 vim.opt.smartcase      = true; -- switch to case sensitive search when typing a capital letter
 vim.opt.shell 		   = "fish"
 
+local space  = "·"
+vim.opt.list = true
+vim.opt.listchars:append {
+	tab        = "│.",
+	multispace = space,
+	lead       = space,
+	trail      = "·",
+	nbsp       = space
+}
+
 -- Setup lazy.nvim
 local bootstrapLazy = function ()
 	-- Bootstrap lazy.nvim
