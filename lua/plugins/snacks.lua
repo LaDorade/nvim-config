@@ -33,7 +33,7 @@ return {
 					{ section = "startup" },
 				},
 			},
-			indent    = { enabled = true },
+			-- indent    = { enabled = true },
 			scratch   = { enabled = true },
 		},
 	}

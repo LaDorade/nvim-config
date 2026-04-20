@@ -15,11 +15,11 @@ vim.opt.shell 		   = "fish"
 local space  = "·"
 vim.opt.list = true
 vim.opt.listchars:append {
-	tab        = "-->",
+	tab        = "→  ",
 	multispace = space,
 	lead       = space,
-	trail      = "·",
-	nbsp       = space
+	trail      = space,
+	nbsp       = space,
 }
 
 -- Setup lazy.nvim
@@ -43,9 +43,9 @@ local bootstrapLazy = function ()
 end
 bootstrapLazy()
 require("lazy").setup({
-  spec = {
-    -- import your plugins
-    { import = "plugins" },
-  },
-  checker = { enabled = true },
+	spec = {
+		-- import your plugins
+		{ import = "plugins" },
+	},
+	checker = { enabled = true },
 })
