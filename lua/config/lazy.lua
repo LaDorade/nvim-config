@@ -15,7 +15,7 @@ vim.opt.shell 		   = "fish"
 local space  = "·"
 vim.opt.list = true
 vim.opt.listchars:append {
-	tab        = "│.",
+	tab        = "-->",
 	multispace = space,
 	lead       = space,
 	trail      = "·",
