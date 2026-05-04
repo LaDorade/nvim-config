@@ -21,7 +21,7 @@ return {
 				local align_index = index_of_align_char[k]
 				local newline     = line
 				if align_index ~= 0  then
-					newline     = line:sub(1, align_index - 1) .. (" "):rep(max_index - align_index, '') .. line:sub(align_index)
+					newline = line:sub(1, align_index - 1) .. (" "):rep(max_index - align_index, '') .. line:sub(align_index)
 				end
 				aligned_lines[#aligned_lines+1] = newline;
 			end
