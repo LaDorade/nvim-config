@@ -1,11 +1,11 @@
 return {
 	dir = "./.", -- inline plugin
 	config = function ()
-		local function alignLinesLeft(alignchar, lines)
+		local function alignLinesLeft(alignpattern, lines)
 			local index_of_align_char = {};
 			local max_index = 0
-			for k, line in ipairs(lines) do
-				local index = string.find(line, alignchar)
+			for _, line in ipairs(lines) do
+				local index = string.find(line, alignpattern)
 				if index ~= nil then
 					max_index = math.max(index, max_index)
 				else
@@ -13,8 +13,6 @@ return {
 				end
 				table.insert(index_of_align_char, index)
 			end
-
-			if (max_index == 0) then return end -- safety
 
 			local aligned_lines = {}
 			for k, line in ipairs(lines) do
@@ -32,6 +30,7 @@ return {
 			if args.args == nil then
 				return
 			end
+			print(args.args)
 			local buf_lines     = vim.api.nvim_buf_get_lines(0, args.line1 - 1, args.line2, true)
 			local aligned_lines = alignLinesLeft(args.args, buf_lines)
 			if aligned_lines ~= nil then
