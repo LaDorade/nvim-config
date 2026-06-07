@@ -5,7 +5,7 @@ return {
 			require('mini.surround').setup()
 			-- vim.keymap.set('v', 'sa', surround)
 			-- sd, sr, sf, sh
-			require('mini.pairs').setup()
+			-- require('mini.pairs').setup()
 		end
 	},
 }
