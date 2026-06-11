@@ -19,93 +19,14 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 vim.keymap.set("n", "U", "<C-r>")
 
--- terminal
+-- desactive :x et ZZ
+vim.keymap.set("n", "ZZ", "")
+vim.cmd("cabbrev x w")
+
+
 vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], {noremap = true})
 
 -- move
 vim.keymap.set('n', '<C-u>', '<C-u>zz');
 vim.keymap.set('n', '<C-d>', '<C-d>zz');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
