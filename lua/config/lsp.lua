@@ -21,9 +21,19 @@ vim.lsp.enable('clangd')
 vim.lsp.enable('gopls')
 vim.lsp.config('*', {
 	capabilities = capabilities,
-	on_attach = function ()
+	on_attach = function (client)
+		local isEnabled = true;
 		vim.keymap.set('n', 'gd', vim.lsp.buf.definition)
 		vim.keymap.set('n', 'gD', vim.lsp.buf.declaration)
+		vim.keymap.set('n', '<leader>ll', function ()
+			if (isEnabled) then
+				vim.lsp.buf_detach_client(0, client.id)
+			else
+				isEnabled = not isEnabled
+				vim.lsp.buf_attach_client(0, client.id)
+			end
+			isEnabled = not isEnabled
+		end, {expr = true})
 	end
 })
 
