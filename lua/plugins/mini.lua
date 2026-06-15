@@ -27,6 +27,9 @@ return {
 					go_in = '<cr>',
 				},
 			})
-		end
+		end,
+		keys = {
+			{"<leader>ppv", function () MiniFiles.open() end, desc = "Open MiniFiles"}
+		}
 	}
 }
