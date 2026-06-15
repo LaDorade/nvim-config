@@ -10,18 +10,25 @@ function _G.get_oil_winbar()
 end
 
 local detail = true
+local detail_cols = { "icon", "permissions", "size", "mtime" }
 return {
 	{
 		'stevearc/oil.nvim',
 		---@module 'oil'
 		---@type oil.SetupOpts
 		-- Optional dependencies
-		-- dependencies = { { "nvim-mini/mini.icons", opts = {} } },
-		dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
+		dependencies = {
+			{ "nvim-tree/nvim-web-devicons" },
+			-- "nvim-mini/mini.icons", opts = {},
+		},
 		-- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
 		lazy = false,
 		opts = {
+			columns = detail_cols, -- default to details view
 			default_file_explorer = true,
+			view_options = {
+				show_hidden = true, -- dotfiles
+			},
 			win_options = {
 				winbar = "%!v:lua.get_oil_winbar()",
 			},
@@ -31,7 +38,7 @@ return {
 					callback = function()
 						detail = not detail
 						if detail then
-							require("oil").set_columns({ "icon", "permissions", "size", "mtime" })
+							require("oil").set_columns(detail_cols)
 						else
 							require("oil").set_columns({ "icon" })
 						end
