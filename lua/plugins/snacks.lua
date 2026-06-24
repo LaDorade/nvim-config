@@ -1,6 +1,7 @@
 return {
 	{
 		'folke/snacks.nvim',
+		lazy = false,
 		opts = {
 			dashboard = {
 				enabled = true,
@@ -34,7 +35,11 @@ return {
 				},
 			},
 			-- indent    = { enabled = true },
-			scratch   = { enabled = true },
+			scratch = { enabled = true },
 		},
+		keys = {
+			{ "<leader>.", function() Snacks.scratch() end,        desc = "Toggle Scratch Buffer" },
+			{ "<leader>S", function() Snacks.scratch.select() end, desc = "Select Scratch Buffer" },
+		}
 	}
 }

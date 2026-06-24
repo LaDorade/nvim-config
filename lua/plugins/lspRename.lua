@@ -98,13 +98,21 @@ end
 M.createFloatWinAndBuf = function ()
 	local word = vim.fn.expand("<cword>");
 	local MIN_SIZE = 20
-	local title = "renaming - " .. word;
-	local floatwidth = math.max(#title + 2, MIN_SIZE)
+	local footerLen = #(" old: " .. word .. " ");
+	local floatwidth = math.max(footerLen + 2, MIN_SIZE)
 
-	local params = vim.lsp.util.make_floating_popup_options(floatwidth, 2, {
-		title  = title,
-		border = "single",
+	local params = vim.lsp.util.make_floating_popup_options(floatwidth, 3, {
+		title     = "rename",
+		title_pos = "center",
+		border    = "single",
 	})
+
+	params.footer = {
+		{" old: "},
+		{word, "String"},
+		{" "},
+	};
+	params.footer_pos = "center"
 
 	local float_buf = vim.api.nvim_create_buf(false, true)
 	vim.api.nvim_buf_set_lines(float_buf, 0, 1, false, { word })
