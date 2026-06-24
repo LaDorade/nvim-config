@@ -29,10 +29,10 @@ vim.lsp.config('*', {
 			if (isEnabled) then
 				vim.lsp.buf_detach_client(0, client.id)
 			else
-				isEnabled = not isEnabled
 				vim.lsp.buf_attach_client(0, client.id)
 			end
 			isEnabled = not isEnabled
+			print ('New Lsp State: ' .. (isEnabled and 'attached' or 'detached') .. ' (' .. client.name .. ')');
 		end, {expr = true})
 	end
 })

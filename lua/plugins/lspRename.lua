@@ -98,11 +98,12 @@ end
 M.createFloatWinAndBuf = function ()
 	local word = vim.fn.expand("<cword>");
 	local MIN_SIZE = 20
-	local floatwidth = math.max(#word + 2, MIN_SIZE)
+	local title = "renaming - " .. word;
+	local floatwidth = math.max(#title + 2, MIN_SIZE)
 
 	local params = vim.lsp.util.make_floating_popup_options(floatwidth, 2, {
-		title = "renaming",
-		border =  "single",
+		title  = title,
+		border = "single",
 	})
 
 	local float_buf = vim.api.nvim_create_buf(false, true)
@@ -124,6 +125,7 @@ M.rename = function ()
 end
 
 vim.api.nvim_create_user_command("LspRename", M.rename, {})
+vim.api.nvim_set_keymap('n', '<leader>rn', "<CMD>LspRename<CR>", {});
 
 
 return {}
