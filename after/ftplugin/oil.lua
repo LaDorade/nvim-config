@@ -1,0 +1,5 @@
+vim.fn.matchadd("VimFile", "[0-9a-zA-Z_-]*\\.vim", 10)
+vim.fn.matchadd("LuaFile", "[0-9a-zA-Z_-]*\\.lua", 10)
+vim.fn.matchadd("MarkdownFile", "[0-9a-zA-Z_-]*\\.md", 10)
+vim.fn.matchadd("JsonFile", "[0-9a-zA-Z_-]*\\.json", 10)
+vim.fn.matchadd("Comment", "[0-9a-zA-Z_-]*\\.o", 10)

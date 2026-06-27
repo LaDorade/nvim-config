@@ -10,7 +10,12 @@ function _G.get_oil_winbar()
 end
 
 local detail = true
-local detail_cols = { "icon", "permissions", "size", "mtime" }
+local detail_cols = {
+	"icon",
+	{ "permissions", highlight = "CommentLight" },
+	{ "size",        highlight = "CommentLightLight" },
+	{ "mtime",       highlight = "CommentLight" },
+}
 return {
 	{
 		'stevearc/oil.nvim',

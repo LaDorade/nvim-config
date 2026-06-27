@@ -22,11 +22,7 @@ return {
 	{
 		'nvim-mini/mini.files', version = '*',
 		config = function ()
-			require('mini.files').setup({
-				mappings = {
-					go_in = '<cr>',
-				},
-			})
+			require('mini.files').setup()
 		end,
 		keys = {
 			{"<leader>ppv", function () MiniFiles.open() end, desc = "Open MiniFiles"}
